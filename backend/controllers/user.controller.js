@@ -4,7 +4,7 @@ const {
     validateEmail,
     validateName
 } = require("../helpers/user_config");
-const db = require("../connection");
+const db = require("../../connection");
 const { generateAccessToken, generateRefreshToken } = require("../helpers/jwt")
 
 exports.login = async (req, res) => {
