@@ -18,3 +18,6 @@ build/
 # 5. OS files (ไฟล์ขยะของระบบปฏิบัติการ)
 .DS_Store
 Thumbs.db
+
+# Jest / Coverage
+backend/coverage/
