@@ -4,7 +4,7 @@ const {
     validateEmail,
     validateName
 } = require("../helpers/user_config");
-const db = require("../../connection");
+const db = require("../connection");
 const { generateAccessToken, generateRefreshToken } = require("../helpers/jwt")
 
 exports.login = async (req, res) => {
@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
         const isMatch = await comparePassword(password, rows[0].password);
 
         if (!isMatch) {
-            return res.status(401).json({ message: "invalid password" });
+            return res.status(401).json({ message: "รหัสผ่านไม่ถูกต้อง" });
         }
         
         const payload = { userId: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email };
@@ -62,9 +62,8 @@ exports.login = async (req, res) => {
 
 exports.registration = async (req, res) => {
     try {
-        console.log("✅ registration hit", req.body);
 
-        let { username, password, passwordCon, email, first_name, last_name } = req.body || {};
+        let { username = "", password = "", passwordCon = "", email = "", first_name = "", last_name = "" } = req.body || {};
         const errors = [];
 
         // required
