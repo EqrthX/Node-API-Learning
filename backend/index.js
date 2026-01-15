@@ -16,9 +16,7 @@ const postRoutes = require("./routes/post.routes");
 
 const app = express();
 const port = 3000;
-app.get('/', (req, res) => {
-  res.send('Backend API is Running on Vercel! 🚀');
-});
+
 app.use(express.json());
 
 
