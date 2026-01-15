@@ -1,5 +1,11 @@
 const express = require("express");
-require("dotenv").config()
+const fs = require('fs');
+const path = require('path');
+require("dotenv").config({path : path.join(__dirname, "../.env")})
+
+if (!fs.existsSync(path.join(__dirname, 'logs'))) {
+    fs.mkdirSync(path.join(__dirname, 'logs'));
+}
 
 const commentRoutes = require("./routes/comment.routes");
 const dummyRoutes = require("./routes/dummy.routes");
@@ -9,12 +15,15 @@ const postRoutes = require("./routes/post.routes");
 
 const app = express();
 const port = 3000;
-
+app.get('/', (req, res) => {
+  res.send('Backend API is Running on Vercel! 🚀');
+});
 app.use(express.json());
-app.use("/api/check", checkRoutes);
 
+
+app.use("/api/check", checkRoutes);
 app.use("/api", userRoutes);
-// mount routes
+
 app.use("/api", postRoutes);
 app.use("/api", dummyRoutes);
 app.use("/api", commentRoutes);

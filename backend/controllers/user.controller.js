@@ -9,6 +9,7 @@ const { generateAccessToken, generateRefreshToken } = require("../helpers/jwt")
 
 exports.login = async (req, res) => {
     try {
+
         const { username, password } = req.body;
 
         if (!username || !password) {
@@ -56,7 +57,7 @@ exports.login = async (req, res) => {
 
     } catch (error) {
         console.error("❌ log crash:", error);
-        return res.status(500).json({ message: "เกิดข้อผิดพลาดในระบบ" });
+        return res.status(500).json({ message: "เกิดข้อผิดพลาดในระบบ", error });
     }
 }
 
