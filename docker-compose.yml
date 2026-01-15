@@ -3,18 +3,21 @@ version: "3.8"
 services:
   # Container ตัวที่ 1: แอพ Node.js ของคุณ
   api:
-    build: ./backend # สั่งให้ build จาก Dockerfile ที่อยู่ในโฟลเดอร์ปัจจุบัน
+    build: ./backend
     ports:
-      - "3000:3000" # map port ออกมา
+      - "3000:3000"
     environment:
-      - DB_HOST=db # <--- จุดสำคัญ! (ดูคำอธิบายด้านล่าง)
+      - DB_HOST=db
       - DB_USER=dev_user
-      - DB_PASS=password1234
+      - DB_PASSWORD=password1234
       - DB_NAME=node_test_api
     env_file:
       - .env
     depends_on:
       - db # บอกให้รอ database รันขึ้นมาก่อนค่อยรันตัวนี้
+    tty: true
+    stdin_open: true
+
   web:
     image: php:8.2-apache
     ports:
@@ -28,11 +31,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password1234
       MYSQL_DATABASE: node_test_api
+      MYSQL_USER: dev_user
+      MYSQL_PASSWORD: password1234 
     ports:
       - "3306:3306" # map port เผื่อเราจะใช้โปรแกรมในเครื่อง connect เข้าไปดูข้อมูล
     volumes:
       - mysql-data:/var/lib/mysql # สร้างพื้นที่เก็บข้อมูล (ถ้าลบ container ข้อมูลจะไม่หาย)
-      - .backned/mysql/init.sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db_script/init.sql:/docker-entrypoint-initdb.d/init.sql
   # 3. ส่วนจัดการ Database (แทนหน้า phpMyAdmin ใน XAMPP)
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
