@@ -6,6 +6,7 @@ const db = mysql.createPool({
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "node_test_api",
+  port: process.env.DB_PORT || "3306"
 });
 
 module.exports = db;  
