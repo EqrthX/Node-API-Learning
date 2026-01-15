@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const db = require("../connection");
 
 const generateAccessToken = (payload) => {
   return jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {

@@ -9,6 +9,7 @@ const { generateAccessToken, generateRefreshToken } = require("../helpers/jwt")
 
 exports.login = async (req, res) => {
     try {
+
         const { username, password } = req.body;
 
         if (!username || !password) {
@@ -28,7 +29,7 @@ exports.login = async (req, res) => {
         const isMatch = await comparePassword(password, rows[0].password);
 
         if (!isMatch) {
-            return res.status(401).json({ message: "invalid password" });
+            return res.status(401).json({ message: "รหัสผ่านไม่ถูกต้อง" });
         }
         
         const payload = { userId: user.id, firstName: user.first_name, lastName: user.last_name, email: user.email };
@@ -56,15 +57,14 @@ exports.login = async (req, res) => {
 
     } catch (error) {
         console.error("❌ log crash:", error);
-        return res.status(500).json({ message: "เกิดข้อผิดพลาดในระบบ" });
+        return res.status(500).json({ message: "เกิดข้อผิดพลาดในระบบ", error });
     }
 }
 
 exports.registration = async (req, res) => {
     try {
-        console.log("✅ registration hit", req.body);
 
-        let { username, password, passwordCon, email, first_name, last_name } = req.body || {};
+        let { username = "", password = "", passwordCon = "", email = "", first_name = "", last_name = "" } = req.body || {};
         const errors = [];
 
         // required
