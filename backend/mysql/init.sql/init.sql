@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 08, 2026 at 04:57 AM
+-- Generation Time: Jan 15, 2026 at 05:43 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,31 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `node_test_api`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `authors`
---
-
-CREATE TABLE `authors` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `title` text NOT NULL,
-  `completed` tinyint(1) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `authors`
---
-
-INSERT INTO `authors` (`id`, `user_id`, `title`, `completed`, `created_at`) VALUES
-(8, 1, 'Play counter', 1, '2026-01-07 08:52:34'),
-(9, 1, 'Play counter', 1, '2026-01-07 08:58:05'),
-(10, 1, 'Play counter', 1, '2026-01-07 11:46:38'),
-(11, 1, 'read book', 1, '2026-01-07 11:46:53'),
-(12, 1, 'read book', 1, '2026-01-07 15:41:10');
 
 -- --------------------------------------------------------
 
@@ -111,7 +86,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_
 (1, 'user1', '$2b$10$mxkpUXd7jVdz8kijba9vz.x2VJHzfy63qKyT3Ufwya9adThc5Nu72', 'user1@gmail.com', 'user', 'user', 1, 1, '2026-01-06 06:09:12', NULL, '2026-01-07 07:35:52', NULL),
 (3, 'user2', '$2b$10$1TxZbLIxI0UbGY3CFG.cAe.SBaeEbKRyBS4gU7loSXnR./7x.w4aK', 'user2@gmail.com', 'userx', 'userx', 1, 0, '2026-01-06 06:16:10', NULL, '2026-01-06 07:03:03', NULL),
 (4, 'user3', '$2b$10$VVWB9xoTdqTnyymC38ndYeLjlh452TlU.3UGJP.wk5twkAQYWVjIy', 'user3@gmail.com', 'test', 'xxxxxx', 1, 0, '2026-01-06 08:29:19', NULL, '2026-01-06 08:29:19', NULL),
-(5, 'user4', '$2b$10$KkqDgQPuwEzA5OdT3tEfAuS/1MdzU9EouZfvOoirNzosXFf/IVkEG', 'user4@gmail.com', 'testxxxx', 'xxxxxx', 1, 0, '2026-01-07 07:24:11', NULL, '2026-01-07 07:24:11', NULL);
+(5, 'user4', '$2b$10$KkqDgQPuwEzA5OdT3tEfAuS/1MdzU9EouZfvOoirNzosXFf/IVkEG', 'user4@gmail.com', 'testxxxx', 'xxxxxx', 1, 0, '2026-01-07 07:24:11', NULL, '2026-01-07 07:24:11', NULL),
+(6, 'user5', '$2b$10$h/l.FyhkFAO/fmOARpb31eNZQ8h28rmjctyRGe/jDD4Y9CYqj5T.y', 'user48@gmail.com', 'testwwwww', 'xxxxxxwwww', 1, 1, '2026-01-15 03:45:21', NULL, '2026-01-15 04:29:08', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,17 +146,12 @@ INSERT INTO `user_tokens` (`id`, `user_id`, `refresh_token`, `created_at`, `expi
 (40, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6InVzZXIiLCJsYXN0TmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc2Nzc3MTM1MiwiZXhwIjoxNzY4Mzc2MTUyfQ.3H3KWF0eub1k0hHKAe5DlbLCf89mRqoUNS6UIS7tXqM', '2026-01-07 07:35:52', '2026-01-14 14:35:52'),
 (41, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6InVzZXIiLCJsYXN0TmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc2Nzc3MzE3NSwiZXhwIjoxNzY4Mzc3OTc1fQ.GfZSWNnitr9enm9vRLQEVdf5e3IwmbG2dCa9Scj97A8', '2026-01-07 08:06:15', '2026-01-14 15:06:15'),
 (42, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6InVzZXIiLCJsYXN0TmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc2Nzc3NTIzNSwiZXhwIjoxNzY4MzgwMDM1fQ.cY5RcXOl3J3v9IeCbzEJdU6YD1Jj6v99CR7RrI6lhrY', '2026-01-07 08:40:35', '2026-01-14 15:40:35'),
-(43, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6InVzZXIiLCJsYXN0TmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc2Nzg0MzM1NCwiZXhwIjoxNzY4NDQ4MTU0fQ.XPnuFCpZm62CdhknwJji1UhdeaAvo7P9YgTkoGRAhyY', '2026-01-08 03:35:54', '2026-01-15 03:35:54');
+(43, 1, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0TmFtZSI6InVzZXIiLCJsYXN0TmFtZSI6InVzZXIiLCJlbWFpbCI6InVzZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc2Nzg0MzM1NCwiZXhwIjoxNzY4NDQ4MTU0fQ.XPnuFCpZm62CdhknwJji1UhdeaAvo7P9YgTkoGRAhyY', '2026-01-08 03:35:54', '2026-01-15 03:35:54'),
+(44, 6, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImZpcnN0TmFtZSI6InRlc3R3d3d3dyIsImxhc3ROYW1lIjoieHh4eHh4d3d3dyIsImVtYWlsIjoidXNlcjQ4QGdtYWlsLmNvbSIsImlhdCI6MTc2ODQ1MTM0OCwiZXhwIjoxNzY5MDU2MTQ4fQ.qcwh_uOoM-tKVlsDdVD8JdXmyo_bhQzG6R9FiAe9gsU', '2026-01-15 04:29:08', '2026-01-22 11:29:08');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `authors`
---
-ALTER TABLE `authors`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `comments`
@@ -212,12 +183,6 @@ ALTER TABLE `user_tokens`
 --
 
 --
--- AUTO_INCREMENT for table `authors`
---
-ALTER TABLE `authors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
@@ -233,13 +198,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_tokens`
 --
 ALTER TABLE `user_tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Constraints for dumped tables
