@@ -1,0 +1,23 @@
+# 1. ไฟล์ Environment Variables (สำคัญมาก ห้ามหลุดขึ้น git)
+.env
+.env.local
+.env.*.local
+
+# 2. Folder ที่เก็บ Library (ห้ามขึ้น git เพราะไฟล์เยอะและหนัก)
+node_modules/
+
+# 3. Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 4. Build output (ถ้ามีการ build)
+dist/
+build/
+
+# 5. OS files (ไฟล์ขยะของระบบปฏิบัติการ)
+.DS_Store
+Thumbs.db
+
+# Jest / Coverage
+backend/coverage/
