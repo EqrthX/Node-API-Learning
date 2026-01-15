@@ -1,15 +1,16 @@
 {
   "version": 2,
+  "outputDirectory": ".",
   "builds": [
     {
       "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "backend/index.js"
+      "src": "/(.*)",
+      "dest": "/backend/index.js"
     }
   ]
 }
