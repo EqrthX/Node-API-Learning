@@ -3,6 +3,7 @@ const express = require("express");
 const fs = require('fs');
 const path = require('path');
 require("dotenv").config({path : path.join(__dirname, "../.env")})
+const cors = require("cors");
 
 // if (!fs.existsSync(path.join(__dirname, 'logs'))) {
 //     fs.mkdirSync(path.join(__dirname, 'logs'));
@@ -15,8 +16,9 @@ const checkRoutes = require("./routes/check.route");
 const postRoutes = require("./routes/post.routes");
 
 const app = express();
-const port = 3000;
+const port = 3002;
 
+app.use(cors());
 app.use(express.json());
 
 
