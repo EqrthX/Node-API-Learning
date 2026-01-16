@@ -6,8 +6,8 @@ const path = require('path');
 
 const router = express.Router();
 
-const userLogStream = fs.createWriteStream(path.join(__dirname, '../logs/access-users.log'), { flags: 'a' });
-router.use(morgan('combined', { stream: userLogStream }));
+// const userLogStream = fs.createWriteStream(path.join(__dirname, '../logs/access-users.log'), { flags: 'a' });
+// router.use(morgan('combined', { stream: userLogStream }));
 
 const userController = require("../controllers/user.controller");
 
