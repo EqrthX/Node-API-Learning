@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 require("dotenv").config({path : path.join(__dirname, "../.env")})
 
-if (!fs.existsSync(path.join(__dirname, 'logs'))) {
-    fs.mkdirSync(path.join(__dirname, 'logs'));
-}
+// if (!fs.existsSync(path.join(__dirname, 'logs'))) {
+//     fs.mkdirSync(path.join(__dirname, 'logs'));
+// }
 
 const commentRoutes = require("./routes/comment.routes");
 const dummyRoutes = require("./routes/dummy.routes");
